@@ -1,0 +1,51 @@
+{
+
+    "successLoginMessage":{
+        "data": {
+            "access_token": "",
+            "refresh_token": ""
+        },
+        "message": "Sign in success",
+        "status": 200
+    },
+
+    "successLoginMessageFuzzyMatch":{
+        "data": {
+            "access_token": "#string",
+            "refresh_token": "#string"
+        },
+        "message": "#string",
+        "status": "#number"
+    },
+
+    "errorMessageofWrongPassword":{
+        "status": 400,
+        "message": "Your password is wrong"
+    },
+
+    "errorMessageofBlankPassword":{
+        "status": 422,
+        "message": "\"password\" is not allowed to be empty"
+    },
+
+    "errorMessageofBlankEmail":{
+        "status": 422,
+        "message": "\"email\" is not allowed to be empty"
+    },
+
+    "errorMessageofMissingEmailField":{
+        "status": 422,
+        "message": "\"email\" is required"
+    },
+
+    "errorMessageofMissingPasswordField":{
+        "status": 422,
+        "message": "\"password\" is required"
+    },
+
+    "errorMessageofWrongEmail":{
+        "status": 400,
+        "message": "User is not found"
+    }
+
+}

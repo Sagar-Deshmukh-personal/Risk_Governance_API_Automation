@@ -1,0 +1,44 @@
+{
+
+    "validEmailPass":{
+        "email": "marklyan@gmail.com",
+        "password": "simple_password"
+    },
+
+    "wrongPassword":{
+        "email": "marklyan@gmail.com",
+        "password": "12345"
+    },
+
+    "blankPassword":{
+        "email": "marklyan@gmail.com",
+        "password": ""
+    },
+
+    "blankEmail":{
+        "email": "",
+        "password": "simple_password"
+    },
+
+    "missingEmailField":{
+        "password": "simple_password"
+    },
+
+    "missingPasswordField":{
+        "email": "marklyan@gmail.com"
+    },
+
+    "wrongEmail":{
+        "email": "marklyan123@gmail.com",
+        "password": "simple_password"
+    },
+
+    "newUserDataCreation":{
+        "name": "Alex Pi",
+        "email": "example@mail.com",
+        "number": "12025550108",
+        "password": "Simple12345",
+        "password_repeat": "Simple12345"
+    }
+
+}
