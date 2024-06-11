@@ -1,25 +1,13 @@
 {
     "config": {
-        "storeBaseUrl": "https://api.storerestapi.com",
+        "mintifiBaseUrl": "http://172.31.3.244:3005/api/v1",
 
-        "typeAuthApi": "/auth",
-        
-        "login":"/login",
-        "register":"/register",
-        "categories":"/categories",
-        "products":"/products"
-        
-        
-
+        "typeCreateIndutry": "/industries"
       },
 
     "actualHeaders": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
         "Content-Type": "application/json"
-    },
-
-    "actualToken": {
-        
     }
 
 }
