@@ -2,7 +2,7 @@
     "config": {
         "mintifiBaseUrl": "http://172.31.3.244:3005/api/v1",
 
-        "typeCreateIndutry": "/industries"
+        "typeCreateIndustry": "/industries"
       },
 
     "actualHeaders": {

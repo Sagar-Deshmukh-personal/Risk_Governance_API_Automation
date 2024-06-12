@@ -5,8 +5,15 @@
         "parentId": "",
         "code": "",
         "active": "",
-        "risk": "HIFH",
+        "risk": "",
         "riskType": ""
+      },
+      "validateMandetoryIndustry":{
+        "name": "",
+        "parentId": "",
+        "code": "",
+        "active": "",
+        "risk": "HIGH",
+        "riskType": "PROVISIONAL"
       }
-
 }
