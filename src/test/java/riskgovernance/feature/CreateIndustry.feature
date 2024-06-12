@@ -1,4 +1,4 @@
-@Industry
+@sanity @Industry
 Feature: To Check the Create Industry API
 Background:
     #Declarations and file read of headers/ cookies
