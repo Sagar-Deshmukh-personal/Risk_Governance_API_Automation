@@ -29,5 +29,18 @@
             "detail": "Duplicate value found for : name"
           }
         ]
-      }
+      },
+      
+    "ErrorCodeResponse":{
+      "status": "error",
+      "title": "unable to process the request",
+      "errors": [
+          {
+              "source": {
+                  "pointer": "/api/v1/industries"
+              },
+              "detail": "unable to process the request"
+          }
+      ]
+  }
 }

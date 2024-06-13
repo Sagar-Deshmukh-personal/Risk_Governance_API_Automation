@@ -25,6 +25,10 @@ Scenario:[TC-ID-01] To verify the Create Industry API with sending mandatory par
     * def randomAdjective = adjectives[randomAdjectiveIndex]
     * def randomNoun = nouns[randomNounIndex]
     * def randomName = randomAdjective + ' ' + randomNoun
+# Add a random alphanumeric string for uniqueness
+    * def uniqueString = Math.random().toString(36).substring(2, 7) // Generates a string of length 5
+    * def randomName = randomAdjective + ' ' + randomNoun + ' ' + uniqueString
+ 
 
 # Remove the selected adjective and noun from the lists to ensure uniqueness
     * def updatedAdjectives = adjectives - randomAdjective
@@ -83,6 +87,10 @@ Scenario:[TC-ID-03]To verify the Create Industry API for duplicate industry crea
     * def randomNoun = nouns[randomNounIndex]
     * def randomName = randomAdjective + ' ' + randomNoun
 
+ # Add a random alphanumeric string for uniqueness
+    * def uniqueString = Math.random().toString(36).substring(2, 7) // Generates a string of length 5
+    * def randomName = randomAdjective + ' ' + randomNoun + ' ' + uniqueString
+
 # Remove the selected adjective and noun from the lists to ensure uniqueness
     * def updatedAdjectives = adjectives - randomAdjective
     * def updatedNouns = nouns - randomNoun
@@ -118,6 +126,7 @@ Scenario:[TC-ID-03]To verify the Create Industry API for duplicate industry crea
 # Validate the error response structure
   * def expectedDuplicateErrorResponse = getResponseBodyLogin.DuplicateIndustryResponse
   * match response == expectedDuplicateErrorResponse
+
 @Industry
 Scenario:[TC-ID-04] To verify the Create Industry API with all parameter
     # Step 1: Create an industry
@@ -133,7 +142,10 @@ Scenario:[TC-ID-04] To verify the Create Industry API with all parameter
         * def randomAdjective = adjectives[randomAdjectiveIndex]
         * def randomNoun = nouns[randomNounIndex]
         * def randomName = randomAdjective + ' ' + randomNoun
-    
+    # Add a random alphanumeric string for uniqueness
+        * def uniqueString = Math.random().toString(36).substring(2, 7) // Generates a string of length 5
+        * def randomName = randomAdjective + ' ' + randomNoun + ' ' + uniqueString
+
     # Remove the selected adjective and noun from the lists to ensure uniqueness
         * def updatedAdjectives = adjectives - randomAdjective
         * def updatedNouns = nouns - randomNoun
@@ -157,6 +169,8 @@ Scenario:[TC-ID-04] To verify the Create Industry API with all parameter
         * requestBody.active = active
     # Add code parameter with a random 5-digit number
         * def randomCode = Math.floor(10000 + Math.random() * 90000).toString()
+    # Ensure the code length does not exceed 12 characters
+        * if (randomCode.length() > 12) { randomCode = randomCode.substring(0, 12) }
         * requestBody.code = randomCode
     
     # Output the values of riskType and risk
@@ -170,3 +184,65 @@ Scenario:[TC-ID-04] To verify the Create Industry API with all parameter
         Then status 200
     # print the response
         And print response
+@Industry @tect
+Scenario:[TC-ID-05] To verify the Create Industry API,When we send code parameter more then 12 length and validate the error message
+    # Step 1: Create an industry
+        * def adjectives = ['Beers ', 'Tractors', 'Auto Batteries ', 'Innovative', 'Small Appliances', 'Steel','Infra','Retail','Readymade Garments']
+        * def nouns = ['Wines', 'Pumps', 'Coolers', 'Solution', 'System', 'Device','Hardware','Travel Services','Ecommerce','Agri Inputs' ]
+        Given url getUrl.mintifiBaseUrl + getUrl.typeCreateIndustry
+        And headers getHeaders
+        And def requestBody = getRequestBodyLogin.validateCreateIndustry
+        
+    # Generate a unique random name
+        * def randomAdjectiveIndex = Math.floor(Math.random() * adjectives.length)
+        * def randomNounIndex = Math.floor(Math.random() * nouns.length)
+        * def randomAdjective = adjectives[randomAdjectiveIndex]
+        * def randomNoun = nouns[randomNounIndex]
+        * def randomName = randomAdjective + ' ' + randomNoun
+    # Add a random alphanumeric string for uniqueness
+        * def uniqueString = Math.random().toString(36).substring(2, 7) // Generates a string of length 5
+        * def randomName = randomAdjective + ' ' + randomNoun + ' ' + uniqueString
+
+    # Remove the selected adjective and noun from the lists to ensure uniqueness
+        * def updatedAdjectives = adjectives - randomAdjective
+        * def updatedNouns = nouns - randomNoun
+        * requestBody.name = randomName
+        
+    # Add riskType parameter with a value of "PROVISIONAL" or "ACTUAL"
+        * def riskTypes = ['PROVISIONAL', 'ACTUAL']
+        * def randomRiskTypeIndex = Math.floor(Math.random() * riskTypes.length)
+        * def riskType = riskTypes[randomRiskTypeIndex]
+        * requestBody.riskType = riskType
+        
+    # Add risk parameter with a value of "HIGH", "MEDIUM", or "LOW"
+        * def risks = ['HIGH', 'MEDIUM', 'LOW']
+        * def randomRiskIndex = Math.floor(Math.random() * risks.length)
+        * def risk = risks[randomRiskIndex]
+        * requestBody.risk = risk
+    # Add active parameter with a value of "True" or "False"
+        * def active = ['true', 'false']
+        * def randomActiveIndex = Math.floor(Math.random() * active.length)
+        * def active = active[randomActiveIndex]
+        * requestBody.active = active
+    # Add code parameter with a random 13-digit number to simulate the error
+        * def randomCode = (Math.floor(1000000000000 + Math.random() * 9000000000000)).toString()
+       * requestBody.code = randomCode
+        
+    # Output the values of riskType and risk
+        * print 'Risk Type: ', requestBody.riskType
+        * print 'Risk: ', requestBody.risk
+        * print 'Active: ', requestBody.active
+        * print 'Code: ', requestBody.code
+   # Sending request
+        And request requestBody
+        When method post
+    # Expect a successful response (status 500)
+        Then status 500
+    # Print the response to verify successful handling
+        And print response
+    # Validate the error response structure
+        * def expectedErrorResponse = getResponseBodyLogin.ErrorCodeResponse
+        * match response == expectedErrorResponse
+    # Validate that every node is either a string or an integer
+        * match response.status == '#string'
+        * match response.title == '#string'
