@@ -63,9 +63,9 @@ Scenario:[TC-IDL-04] To verify the Industry list API with with all parameter(lik
     * print 'Response Count: ', responseCount
     * def responseTotalRecords = response.meta.total_records
     * print " Response Total Record", responseTotalRecords
-    
+
 @IndList   
-Scenario:[TC-IDL-04] To verify the Industry list API with with all parameter(like Name,Per page,page)
+Scenario:[TC-IDL-05] To verify the Industry list API with only "per" parameter and match result
     Given url getUrl.mintifiBaseUrl + getUrl.typeCreateIndustry
     And headers getHeaders
     And param per = 10
