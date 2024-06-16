@@ -63,3 +63,16 @@ Scenario:[TC-IDL-04] To verify the Industry list API with with all parameter(lik
     * print 'Response Count: ', responseCount
     * def responseTotalRecords = response.meta.total_records
     * print " Response Total Record", responseTotalRecords
+    
+@IndList   
+Scenario:[TC-IDL-04] To verify the Industry list API with with all parameter(like Name,Per page,page)
+    Given url getUrl.mintifiBaseUrl + getUrl.typeCreateIndustry
+    And headers getHeaders
+    And param per = 10
+    When method GET
+    Then status 200
+    * print response
+    * def responseCount = response.meta.total_count
+    * print 'Response Count: ', responseCount
+    * def responseTotalRecords = response.meta.total_records
+    * print " Response Total Record", responseTotalRecords
