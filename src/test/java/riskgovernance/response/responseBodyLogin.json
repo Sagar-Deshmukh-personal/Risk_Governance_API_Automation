@@ -42,5 +42,30 @@
               "detail": "unable to process the request"
           }
       ]
+  },
+
+  "validateFuzzyMatchErrorResponse":{
+    "status": "#string",
+    "message": "#string",
+    "errors": [
+      {
+        "field": "#string",
+        "message": "#string"
+      }
+    ]
+  },
+  "validateFuzzyMatchErrorResponseO": {
+    "status": "#string",
+    "message": "#string",
+    "errors": [
+      {
+        "field": "#string",
+        "message": "#string"
+      },
+      {
+        "field": "#string",
+        "message": "#string"
+      }
+    ]
   }
 }
