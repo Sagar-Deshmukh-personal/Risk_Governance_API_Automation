@@ -15,5 +15,16 @@
         "active": "",
         "risk": "HIGH",
         "riskType": "PROVISIONAL"
+      },
+
+      "validateMember":{
+        "name": "",
+        "email": "",
+        "role": "manager"
+      },
+      "valiateemptyparameter": {
+        "name": "",
+        "email": "",
+        "role": "manager"
       }
 }
