@@ -1,5 +1,4 @@
 package riskgovernance;
-
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +11,7 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
 
-public class riskgovernanceTest {
+public class RiskGovernanceTest {
 
     @Test
     void testParallel() {

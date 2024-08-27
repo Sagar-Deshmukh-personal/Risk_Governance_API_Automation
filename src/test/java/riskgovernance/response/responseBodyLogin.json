@@ -67,5 +67,20 @@
         "message": "#string"
       }
     ]
+  },
+  "validateErrorResponse":{
+    "status": "error",
+    "message": "Invalid Parameters",
+    "errors": [
+      {
+        "field": "member.email",
+        "message": "is not a valid email addressq"
+      },
+      {
+        "field": "member.email",
+        "message": "must be a Mintifi email address"
+      }
+    ]
   }
+  
 }
