@@ -26,5 +26,17 @@
         "name": "",
         "email": "",
         "role": "manager"
+      },
+      "validateerrorparameter": {
+        "name": "",
+        "email": "sagar.deshmukh@mintifi.com",
+        "role": "manager"
+      },
+      "validateimvalidparameter":{
+        "name": "4644777",
+        "email": "rttrtrtr",
+        "role": "manager"
       }
+
+
 }
