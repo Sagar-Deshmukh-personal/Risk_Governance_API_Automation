@@ -1,0 +1,8 @@
+{
+    "validateAdminUser":{
+      "admin_user": {
+          "email":"super_admin@mintifi.com",
+          "password": "Mintifi@123" 
+      }
+  }
+}

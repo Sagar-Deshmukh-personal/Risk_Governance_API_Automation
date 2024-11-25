@@ -67,5 +67,39 @@
         "message": "#string"
       }
     ]
-  }
+},
+  "ErrorresponseForTeam":{
+    "status": "error",
+    "message": "Invalid Parameters",
+    "errors": [
+        {
+            "field": "team.teamMembers.member",
+            "message": "must exist"
+        },
+        {
+            "field": "team.teamNotificationSettings.notificationEvent",
+            "message": "must exist"
+        },
+        {
+            "field": "team.teamNotificationSettings.notificationEventId",
+            "message": "can't be blank"
+        },
+        {
+            "field": "team.name",
+            "message": "has already been taken"
+        },
+        {
+            "field": "team.teamMembers[0].member",
+            "message": "must exist"
+        },
+        {
+            "field": "team.teamNotificationSettings[0].notificationEvent",
+            "message": "must exist"
+        },
+        {
+            "field": "team.teamNotificationSettings[0].notificationEventId",
+            "message": "can't be blank"
+        }
+    ]
+}
 }
